@@ -1,6 +1,5 @@
 import "./style.css";
 import { NOMISMA_CONFIG as config } from "./config.js";
-import { initializeMetaPixel, trackSuccessfulApplication } from "./meta-pixel.js";
 
 const money = (value) =>
   new Intl.NumberFormat("en-NG", {
@@ -29,11 +28,11 @@ document.querySelector("#app").innerHTML = `
 <div class="actions"><a class="button primary" href="#apply">Apply Now ${arrow}</a></div></div>
 <section class="form-card" id="apply" aria-labelledby="form-title" tabindex="-1"><div class="form-heading"><p class="eyebrow">Let’s get started</p><span class="form-tag">Loan application</span></div><h2 id="form-title">Start your loan application.</h2>
 <form id="enquiry-form"><p class="required-note">All fields are required.</p>
-<fieldset class="applicant"><legend>I’m applying as a</legend><div class="choices"><label><input type="radio" name="applicantType" value="Salary Earner" required><span><span aria-hidden="true">♙</span> Salary Earner</span></label><label><input type="radio" name="applicantType" value="Business Owner" required><span><span aria-hidden="true">▤</span> Business Owner</span></label></div></fieldset>
 <div class="fields"><div class="field full"><label for="full-name">Full name</label><input id="full-name" name="fullName" autocomplete="name" maxlength="120" required placeholder="Your full name"></div>
+<div class="field full"><label for="location">Location / Address</label><input id="location" name="location" type="text" autocomplete="address-level2" maxlength="120" required placeholder="Your location or address"></div>
+<div class="field full"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="24" required placeholder="Your phone number" aria-describedby="phone-help"><span class="sr-only" id="phone-help">Enter 10 to 15 digits, with an optional country code.</span></div>
 <div class="field full"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="Your email address"></div>
-<div class="field"><label for="amount">Loan amount (₦)</label><input id="amount" name="amount" type="text" inputmode="numeric" maxlength="40" required placeholder="e.g. ₦1,000,000" aria-describedby="amount-help"></div>
-<div class="field"><label for="location">Location</label><input id="location" name="location" type="text" autocomplete="address-level2" maxlength="120" required placeholder="Your location"></div></div>
+<div class="field full"><label for="amount">Loan amount (₦)</label><input id="amount" name="amount" type="text" inputmode="numeric" maxlength="40" required placeholder="e.g. ₦1,000,000" aria-describedby="amount-help"></div></div>
 <p id="amount-help" class="amount-help">Enter an amount between ${money(config.loanMin)} and ${money(config.loanMax)}.</p>
 <div class="honeypot" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="_honey" tabindex="-1" autocomplete="off"></div>
 <p class="privacy-help">For your safety, do not submit passwords, PINs, BVN, NIN or sensitive banking credentials through this form.</p>
@@ -43,7 +42,7 @@ document.querySelector("#app").innerHTML = `
 <div id="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="success" hidden tabindex="-1"><div class="success-icon" aria-hidden="true">✓</div><p>Check your email for feedback</p></div>
 </section></div></section>
-<section class="container serve section" aria-labelledby="serve-title"><div class="section-heading"><div><p class="eyebrow">Who we serve</p><h2 id="serve-title">Different goals.<br>The same thoughtful approach.</h2></div><p>Personal priorities or business possibilities.<br>Tell us what moving forward means to you.</p></div><div class="serve-grid"><article class="serve-card"><div class="card-top"><span class="line-icon" aria-hidden="true">♙</span><span class="card-label">Personal needs</span></div><h3>Salary Earners</h3><p>Explore loan options for important personal needs and planned expenses, subject to an assessment of your circumstances.</p><a href="#apply" data-applicant="Salary Earner">Apply as a Salary Earner ${arrow}</a></article><article class="serve-card business"><div class="card-top"><span class="line-icon" aria-hidden="true">▤</span><span class="card-label">Business goals</span></div><h3>Business Owners</h3><p>Start a conversation about working capital, expansion or other eligible needs for the business you are building.</p><a href="#apply" data-applicant="Business Owner">Apply as a Business Owner ${arrow}</a></article></div></section>
+<section class="container serve section" aria-labelledby="serve-title"><div class="section-heading"><div><p class="eyebrow">Who we serve</p><h2 id="serve-title">Different goals.<br>The same thoughtful approach.</h2></div><p>Personal priorities or business possibilities.<br>Tell us what moving forward means to you.</p></div><div class="serve-grid"><article class="serve-card"><div class="card-top"><span class="line-icon" aria-hidden="true">♙</span><span class="card-label">Personal needs</span></div><h3>Salary Earners</h3><p>Explore loan options for important personal needs and planned expenses, subject to an assessment of your circumstances.</p><a href="#apply">Apply as a Salary Earner ${arrow}</a></article><article class="serve-card business"><div class="card-top"><span class="line-icon" aria-hidden="true">▤</span><span class="card-label">Business goals</span></div><h3>Business Owners</h3><p>Start a conversation about working capital, expansion or other eligible needs for the business you are building.</p><a href="#apply">Apply as a Business Owner ${arrow}</a></article></div></section>
 <section class="process section" id="how-it-works"><div class="container"><p class="eyebrow">How it works</p><h2>A clear place to start</h2><ol class="steps"><li><span>01</span><h3>Submit your application</h3><p>Share your name, loan amount and location.</p></li><li><span>02</span><h3>Eligibility review</h3><p>Nomisma reviews your application as the first step in assessing eligibility.</p></li><li><span>03</span><h3>Discuss your next steps</h3><p>A Nomisma representative contacts you with the appropriate next steps.</p></li></ol></div></section>
 <section class="container disclosure"><span class="notice-icon" aria-hidden="true">i</span><div><h2>Before you apply</h2><p>Submitting a loan application does not constitute loan approval. Loan amount, eligibility, documentation requirements, repayment terms and final approval are subject to Nomisma’s assessment and applicable terms. Advertised rates are based on the selected repayment duration.</p></div></section>
 <section class="container final-cta"><div><h2>So what’s next?</h2><p>Start your loan application.</p></div><div class="actions"><a class="button lime" href="#apply">Apply Now ${arrow}</a></div></section>
@@ -51,33 +50,31 @@ document.querySelector("#app").innerHTML = `
 <nav class="mobile-bar" aria-label="Quick action"><a class="button primary" href="#apply">Apply Now ${arrow}</a></nav>`;
 
 const form = document.querySelector("#enquiry-form");
-initializeMetaPixel();
 // Use native validation messages after setting the specific amount message.
 form.noValidate = true;
 const status = document.querySelector("#form-status");
 const submit = form.querySelector('[type="submit"]');
 let sending = false;
-for (const link of document.querySelectorAll("[data-applicant]")) {
-  link.addEventListener("click", () => {
-    if (form.hidden) return;
-    const option = [...form.querySelectorAll('[name="applicantType"]')].find(
-      (input) => input.value === link.dataset.applicant,
-    );
-    option.checked = true;
-    option.focus({ preventScroll: true });
-  });
-}
 form.addEventListener("input", (event) => event.target.setCustomValidity?.(""));
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (sending) return;
   for (const input of form.querySelectorAll(
-    'input[required]:not([type="radio"]):not([type="checkbox"])',
+    'input[required]:not([type="checkbox"])',
   )) {
     input.setCustomValidity(
       input.value.trim() ? "" : "Please complete this field.",
     );
   }
+  const phone = form.elements.phone;
+  const digits = phone.value.replace(/\D/g, "");
+  phone.setCustomValidity(
+    /^\+?[\d\s().-]+$/.test(phone.value) &&
+      digits.length >= 10 &&
+      digits.length <= 15
+      ? ""
+      : "Please enter a valid phone number with 10 to 15 digits.",
+  );
   const amount = form.elements.amount;
   const requestedAmount = parseLoanAmount(amount.value);
   amount.setCustomValidity(
@@ -123,10 +120,10 @@ form.addEventListener("submit", async (event) => {
           _template: "table",
           _honey: values._honey,
           "Full Name": values.fullName,
-          "Applicant Type": values.applicantType,
+          "Location / Address": values.location,
+          "Phone Number": values.phone,
           "Email Address": values.email,
           "Loan Amount": money(requestedAmount),
-          Location: values.location,
           Consent:
             "I consent to Nomisma using the information I provide to contact me regarding this loan application.",
         }),
@@ -135,7 +132,6 @@ form.addEventListener("submit", async (event) => {
     const result = await response.json();
     if (!response.ok || !(result.success === true || result.success === "true"))
       throw new Error("Submission not confirmed");
-    trackSuccessfulApplication();
     form.hidden = true;
     document.querySelector("#form-title").innerHTML =
       "Thank you<br>Your loan application has been received.";

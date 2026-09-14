@@ -1,6 +1,5 @@
 // Client-confirmed campaign configuration and financing terms.
 export const NOMISMA_CONFIG = Object.freeze({
-  metaPixelId: "1081194371889688",
   formSubmitEndpoint: "https://formsubmit.co/ajax/Lagosenquiries@nomismaolive.com",
   loanMin: 500000,
   loanMax: 20000000,

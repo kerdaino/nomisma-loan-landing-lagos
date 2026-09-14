@@ -275,63 +275,9 @@ h1 em {
   color: var(--muted);
   margin: 20px 0 12px;
 }
-.applicant {
-  border: 0;
-  padding: 0;
-  margin: 0 0 17px;
-  min-width: 0;
-}
-legend,
 label {
   font-size: 11px;
   font-weight: 600;
-}
-legend {
-  padding: 0;
-  margin-bottom: 7px;
-}
-.choices {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.choices label {
-  position: relative;
-  cursor: pointer;
-}
-.choices input {
-  position: absolute;
-  left: 12px;
-  top: 16px;
-  width: 15px;
-  height: 15px;
-  margin: 0;
-  accent-color: var(--green);
-}
-.choices label > span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  justify-content: center;
-  padding: 13px 6px 13px 26px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  min-height: 46px;
-}
-.choices label:hover > span {
-  border-color: #738e1f;
-  background: #f7f9ef;
-}
-.choices input:checked + span {
-  border-color: #738e1f;
-  background: #f2f6e6;
-}
-.choices input:focus-visible + span {
-  outline: 3px solid #876500;
-  outline-offset: 3px;
-}
-.choices span span {
-  font-size: 17px;
 }
 .fields {
   display: grid;
@@ -686,9 +632,6 @@ textarea {
   .hero-copy {
     padding-top: 16px;
   }
-  .choices label > span {
-    font-size: 10px;
-  }
   .final-cta {
     padding: 36px;
   }
@@ -778,11 +721,7 @@ textarea {
   .form-card h2 {
     font-size: 29px;
   }
-  .choices label > span {
-    font-size: 12px;
-  }
-  .field label,
-  legend {
+  .field label {
     font-size: 12px;
   }
   input:not([type="checkbox"]):not([type="radio"]),
@@ -900,9 +839,6 @@ textarea {
   }
   .financing-terms dd {
     font-size: 16px;
-  }
-  .choices label > span {
-    font-size: 11px;
   }
   .form-card h2 {
     font-size: 26px;
