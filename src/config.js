@@ -1,6 +1,7 @@
 // Client-confirmed campaign configuration and financing terms.
 export const NOMISMA_CONFIG = Object.freeze({
   formSubmitEndpoint: "https://formsubmit.co/ajax/Lagosenquiries@nomismaolive.com",
+  whatsappNumber: "2347071676772",
   loanMin: 500000,
   loanMax: 20000000,
   rateShortTerm: 4.2,
