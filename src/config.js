@@ -1,6 +1,6 @@
 // Client-confirmed campaign configuration and financing terms.
 export const NOMISMA_CONFIG = Object.freeze({
-  whatsappNumber: "2348031672338",
+  whatsappNumber: "2347071676772",
   loanMin: 500000,
   loanMax: 20000000,
   rateShortTerm: 4.2,
