@@ -20,24 +20,18 @@ html {
 body {
   margin: 0;
 }
-button,
-input,
-textarea {
+button {
   font: inherit;
 }
 a {
   color: inherit;
 }
 button,
-a,
-input,
-textarea {
+a {
   -webkit-tap-highlight-color: transparent;
 }
 a,
-button,
-input,
-textarea {
+button {
   touch-action: manipulation;
 }
 button {
@@ -229,12 +223,6 @@ h1 em {
   font-weight: 700;
   color: var(--green);
 }
-.amount-help {
-  font-size: 11px;
-  line-height: 1.6;
-  color: var(--muted);
-  margin-top: 8px;
-}
 .small {
   font-size: 12px;
   color: var(--muted);
@@ -244,128 +232,51 @@ h1 em {
   gap: 12px;
   flex-wrap: wrap;
 }
-.form-card {
+.application-card {
   padding: 30px;
   background: white;
   border: 1px solid #e1e4d9;
   border-radius: 18px;
   box-shadow: 0 16px 50px #2636000c;
-  scroll-margin-top: 24px;
 }
-.form-heading {
+.application-heading {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: center;
 }
-.form-tag {
+.application-tag {
   font-size: 10px;
   background: #f0f3e4;
   color: #526333;
   padding: 4px 9px;
   border-radius: 20px;
 }
-.form-card h2 {
+.application-card h2 {
   font-size: 28px;
   letter-spacing: -1px;
-  margin: 14px 0 8px;
+  margin: 14px 0 16px;
 }
-.required-note {
-  font-size: 10px;
-  color: var(--muted);
-  margin: 20px 0 12px;
-}
-label {
-  font-size: 11px;
-  font-weight: 600;
-}
-.fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px 14px;
-}
-.field {
-  min-width: 0;
-}
-.full {
-  grid-column: 1/-1;
-}
-.field label {
-  display: block;
-  margin-bottom: 5px;
-}
-.field label span {
-  font-weight: 400;
+.application-card > p {
+  font-size: 14px;
+  line-height: 1.8;
   color: var(--muted);
 }
-input:not([type="checkbox"]):not([type="radio"]),
-textarea {
+.application-range {
+  margin-top: 18px;
+}
+.application-range strong {
+  color: var(--green);
+}
+.application-button {
   width: 100%;
-  min-height: 43px;
-  border: 1px solid #d8ddce;
-  border-radius: 6px;
-  padding: 10px 11px;
-  background: #fdfefb;
-  color: #283022;
-  font-size: 13px;
-}
-input::placeholder,
-textarea::placeholder {
-  color: #767c6e;
-  opacity: 1;
-}
-textarea {
-  resize: vertical;
-}
-.privacy-help {
-  font-size: 10px;
-  line-height: 1.7;
-  background: #f6f7f0;
-  border-radius: 6px;
-  padding: 10px 12px;
-  margin: 15px 0;
-}
-.consent {
-  display: flex;
-  gap: 9px;
-  align-items: flex-start;
-  font-size: 11px;
-  font-weight: 400;
-  color: #52594a;
-  cursor: pointer;
-}
-.consent input {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-  accent-color: var(--green);
-  margin: 2px 0;
-}
-.submit {
-  width: 100%;
-  margin-top: 20px;
   justify-content: space-between;
+  margin-top: 24px;
 }
-.submit:disabled {
-  opacity: 0.65;
-  cursor: wait;
-  transform: none;
-}
-.form-footnote {
+.application-footnote {
   font-size: 10px;
-  color: var(--muted);
   text-align: center;
-  margin-top: 10px;
-}
-.honeypot,
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  margin-top: 12px;
 }
 .section {
   padding-block: 85px;
@@ -573,35 +484,6 @@ textarea {
 .skip-link:focus {
   top: 10px;
 }
-#form-status:not(:empty) {
-  background: #f5f4e8;
-  border-radius: 7px;
-  font-size: 13px;
-  padding: 13px;
-  margin-top: 15px;
-}
-#success {
-  padding: 30px 0;
-}
-#success h3 {
-  font-size: 28px;
-}
-#success p {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 20px 0;
-}
-.success-icon {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #edf4d7;
-  color: var(--green);
-  font-size: 26px;
-  margin-bottom: 25px;
-}
 @media (min-width: 1500px) {
   .hero-grid {
     gap: 90px;
@@ -617,7 +499,7 @@ textarea {
   .hero {
     padding-block: 40px;
   }
-  .form-card {
+  .application-card {
     padding: 24px;
   }
   .header nav {
@@ -649,9 +531,6 @@ textarea {
   html {
     scroll-padding-bottom: 100px;
   }
-  input,
-  .submit,
-  #success,
   .disclosure,
   .footer {
     scroll-margin-bottom: 100px;
@@ -715,27 +594,14 @@ textarea {
     flex: 1;
     padding-inline: 14px;
   }
-  .form-card {
+  .application-card {
     padding: 25px;
   }
-  .form-card h2 {
+  .application-card h2 {
     font-size: 29px;
   }
-  .field label {
-    font-size: 12px;
-  }
-  input:not([type="checkbox"]):not([type="radio"]),
-  textarea {
-    font-size: 16px;
-    min-height: 48px;
-  }
-  .privacy-help,
-  .required-note,
-  .form-footnote {
+  .application-footnote {
     font-size: 11px;
-  }
-  .consent {
-    font-size: 12px;
   }
   .section {
     padding-block: 50px;
@@ -813,19 +679,10 @@ textarea {
     padding: 12px;
     font-size: 13px;
   }
-  .form-card {
-    scroll-margin-top: 15px;
-  }
 }
 @media (max-width: 420px) {
-  .form-card {
+  .application-card {
     padding: 20px;
-  }
-  .fields {
-    grid-template-columns: 1fr;
-  }
-  .field {
-    grid-column: 1/-1;
   }
   .hero-copy > .actions {
     gap: 8px;
@@ -840,7 +697,7 @@ textarea {
   .financing-terms dd {
     font-size: 16px;
   }
-  .form-card h2 {
+  .application-card h2 {
     font-size: 26px;
   }
   .logo {
